@@ -11,6 +11,7 @@ local plugins = {
         "prettier",
         "goimports",
         "shfmt",
+        "groovy-language-server",
       },
     },
   },
@@ -116,6 +117,30 @@ local plugins = {
       ensure_installed = { "lua", "puppet", "python", "rust", "go" },
     },
   },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      {"zbirenbaum/copilot.lua"},
+      {"nvim-lua/plenary.nvim"},
+    },
+    opts = {
+      debug = true, -- Enable or disable debug mode, the log file will be in ~/.local/state/nvim/CopilotChat.nvim.log
+    },
+    build = function()
+      vim.notify("Please update the remote plugins by running ':UpdateRemotePlugins', then restart Neovim.")
+    end,
+    event = "VeryLazy",
+    keys = {
+      { "<leader>cce", "<cmd>CopilotChatExplain<cr>", desc = "CopilotChat - Explain code" },
+      { "<leader>cct", "<cmd>CopilotChatTests<cr>", desc = "CopilotChat - Generate tests" },
+      {
+        "<leader>ccv",
+        ":CopilotChat<cr>",
+        desc = "CopilotChat - Open in vertical split",
+      },
+    },
+  }
 }
 
 return plugins

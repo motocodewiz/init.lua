@@ -25,7 +25,7 @@ lspconfig.rust_analyzer.setup({
 lspconfig.gopls.setup({
   on_attach = on_attach,
   capabilites = capabilites,
-  filetypes = {"go", "gomod", "gowork", "gotmpl" }, 
+  filetypes = {"go", "gomod", "gowork", "gotmpl" },
   cmd = {"gopls"},
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -37,4 +37,9 @@ lspconfig.gopls.setup({
       },
     },
   },
+})
+lspconfig.groovyls.setup({
+  on_attach = on_attach,
+  capabilites = capabilites,
+  filetypes = {"groovy"},
 })
